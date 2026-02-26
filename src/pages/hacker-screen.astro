@@ -1,0 +1,233 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Hacker Screen | Hacker Typing Simulator Online"
+  description="Realistic hacker typing simulator — green terminal with scrolling code. Perfect for pranks, prank videos, and creative fun. Free, instant."
+  themeColor="#001a00"
+  lang="en"
+  canonical="/hacker-screen"
+>
+  <h1 class="sr-only">Hacker Screen — Hacker Typing Simulator Online</h1>
+  <div id="hacker-app">
+    <canvas id="matrix-canvas"></canvas>
+    <div id="terminal">
+      <div id="terminal-output"></div>
+      <div id="terminal-input-line">
+        <span class="prompt">root@localhost:~#</span>
+        <span id="cursor-text"></span>
+        <span class="cursor">▋</span>
+      </div>
+    </div>
+    <div id="hacker-toolbar">
+      <button id="btn-speed-slow" class="hbtn">Slow</button>
+      <button id="btn-speed-med" class="hbtn act">Normal</button>
+      <button id="btn-speed-fast" class="hbtn">Fast</button>
+      <button id="btn-fs" class="hbtn">⛶ Fullscreen</button>
+      <a href="/" class="hbtn">← Back</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+  body { background: #000; }
+  #hacker-app { position:fixed; inset:0; background:#000; overflow:hidden; font-family:'Courier New',monospace; }
+
+  #matrix-canvas { position:absolute; inset:0; width:100%; height:100%; opacity:0.08; pointer-events:none; }
+
+  #terminal {
+    position:absolute; inset:0;
+    padding:20px 24px 80px;
+    overflow:hidden;
+    color:#00ff41;
+    font-size:clamp(11px,1.4vw,14px);
+    line-height:1.5;
+  }
+  #terminal-output { white-space:pre-wrap; word-break:break-all; }
+  #terminal-input-line { display:flex; gap:8px; margin-top:4px; flex-wrap:wrap; }
+  .prompt { color:#00cc33; }
+  #cursor-text { color:#00ff41; }
+  .cursor { color:#00ff41; animation:blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity:0; } }
+
+  #hacker-toolbar {
+    position:fixed; bottom:0; left:0; right:0;
+    display:flex; gap:8px; padding:10px 16px;
+    background:rgba(0,20,0,0.9);
+    border-top:1px solid #003300;
+    transition:opacity 0.3s; z-index:100;
+  }
+  #hacker-toolbar.hide { opacity:0; pointer-events:none; }
+
+  .hbtn {
+    padding:5px 12px; border-radius:4px;
+    border:1px solid #004400; background:rgba(0,50,0,0.6);
+    color:#00ff41; font-size:12px; cursor:pointer;
+    text-decoration:none;
+    transition:background 0.15s;
+  }
+  .hbtn:hover { background:rgba(0,100,0,0.6); }
+  .hbtn.act { border-color:#00cc33; background:rgba(0,80,0,0.7); }
+</style>
+
+<script>
+(function () {
+  const output     = document.getElementById('terminal-output');
+  const cursorText = document.getElementById('cursor-text');
+  const toolbar    = document.getElementById('hacker-toolbar');
+  const canvas     = document.getElementById('matrix-canvas');
+  const btnFs      = document.getElementById('btn-fs');
+
+  // ── SPEED ──────────────────────────────────────────────────
+  const speeds = { slow: 120, normal: 45, fast: 12 };
+  let delay = speeds.normal;
+  document.getElementById('btn-speed-slow').addEventListener('click', function() { setSpeed('slow', this); });
+  document.getElementById('btn-speed-med').addEventListener('click',  function() { setSpeed('normal', this); });
+  document.getElementById('btn-speed-fast').addEventListener('click', function() { setSpeed('fast', this); });
+  function setSpeed(s, btn) {
+    delay = speeds[s];
+    document.querySelectorAll('.hbtn').forEach(b => b.classList.remove('act'));
+    btn.classList.add('act');
+  }
+
+  // ── FAKE CODE LINES ───────────────────────────────────────
+  const fakeLines = [
+    'Initializing exploit framework v3.14.1...',
+    'Loading modules: nmap, metasploit, hydra, sqlmap',
+    'Scanning target network 192.168.1.0/24...',
+    '[+] Host discovered: 192.168.1.105 (Windows 11)',
+    '[+] Host discovered: 192.168.1.202 (Ubuntu 22.04)',
+    'Running port scan on 192.168.1.105...',
+    '22/tcp  open   ssh      OpenSSH 8.9',
+    '80/tcp  open   http     Apache 2.4.54',
+    '443/tcp open   https    Apache 2.4.54',
+    '3389/tcp open  ms-wbt-server Microsoft Terminal Services',
+    '[*] Starting brute force attack on SSH...',
+    '[*] Trying admin:password123 ... failed',
+    '[*] Trying root:toor ... failed',
+    '[*] Trying admin:letmein ... failed',
+    '[+] SUCCESS: admin:P@ssw0rd2024!',
+    '[+] SSH shell obtained on 192.168.1.105',
+    'Connected to remote host. Spawning shell...',
+    'root@192.168.1.105:~# whoami',
+    'root',
+    'root@192.168.1.105:~# cat /etc/passwd',
+    'root:x:0:0:root:/root:/bin/bash',
+    'daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin',
+    'Uploading payload... [████████████████] 100%',
+    '[+] Payload deployed successfully',
+    'Establishing persistent backdoor...',
+    '[+] Backdoor installed at /usr/lib/.syslogd',
+    'Exfiltrating data... [████████░░░░░░░░] 48%',
+    'root@192.168.1.105:~# ls -la /home',
+    'total 32',
+    'drwxr-xr-x  4 root root 4096 Jan 15 09:23 .',
+    'drwxr-xr-x 22 root root 4096 Jan 15 09:23 ..',
+    'drwxr-xr-x  8 user user 4096 Jan 22 14:11 user',
+    'Intercepting network traffic...',
+    '[*] ARP poisoning 192.168.1.1 <-> 192.168.1.105',
+    '[+] MITM attack active. Capturing credentials...',
+    'Decrypting SSL/TLS traffic...',
+    '[+] Captured: user@example.com / Secr3tPass!',
+    '[+] Captured: admin@corp.net / Corp@2024',
+    'Downloading /home/user/Documents...',
+    'Exfiltrating data... [████████████████] 100%',
+    '[+] 2.3 GB of data exfiltrated successfully',
+    'Cleaning tracks...',
+    'Wiping logs from /var/log/auth.log',
+    'Wiping logs from /var/log/syslog',
+    '[+] All traces removed',
+    '[*] Operation complete. Connection closed.',
+    '---',
+    'Starting new operation...',
+  ];
+
+  let lineIndex = 0;
+  let charIndex = 0;
+  let lines = '';
+  const MAX_LINES = 80;
+
+  function getNextLine() {
+    const line = fakeLines[lineIndex % fakeLines.length];
+    lineIndex++;
+    return line;
+  }
+
+  let currentLine = getNextLine();
+  let typingTimer;
+
+  function type() {
+    if (charIndex < currentLine.length) {
+      cursorText.textContent += currentLine[charIndex];
+      charIndex++;
+      typingTimer = setTimeout(type, delay + Math.random() * delay * 0.6);
+    } else {
+      // Line complete — move to output
+      const lineDiv = document.createElement('div');
+      lineDiv.textContent = (currentLine === '---') ? '' : currentLine;
+      lineDiv.style.color = currentLine.startsWith('[+]') ? '#00ff88'
+                          : currentLine.startsWith('[*]') ? '#88aaff'
+                          : currentLine.startsWith('root@') ? '#ffcc00'
+                          : '#00ff41';
+      output.appendChild(lineDiv);
+
+      // Trim old lines
+      while (output.children.length > MAX_LINES) {
+        output.removeChild(output.firstChild);
+      }
+
+      cursorText.textContent = '';
+      charIndex = 0;
+      currentLine = getNextLine();
+
+      // Scroll to bottom
+      output.parentElement.scrollTop = output.parentElement.scrollHeight;
+
+      typingTimer = setTimeout(type, delay * 2);
+    }
+  }
+  type();
+
+  // ── MATRIX BACKGROUND ─────────────────────────────────────
+  const ctx = canvas.getContext('2d');
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+  window.addEventListener('resize', () => {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+  const cols = Math.floor(canvas.width / 16);
+  const drops = Array(cols).fill(1);
+  setInterval(() => {
+    ctx.fillStyle = 'rgba(0,0,0,0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#00ff41';
+    ctx.font = '14px monospace';
+    for (let i = 0; i < drops.length; i++) {
+      const char = String.fromCharCode(0x30A0 + Math.random() * 96);
+      ctx.fillText(char, i * 16, drops[i] * 16);
+      if (drops[i] * 16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+  }, 40);
+
+  // ── TOOLBAR + FULLSCREEN ──────────────────────────────────
+  let hideTimer;
+  function showBar() {
+    toolbar.classList.remove('hide');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => toolbar.classList.add('hide'), 3000);
+  }
+  document.addEventListener('mousemove', showBar, { passive: true });
+  document.addEventListener('touchstart', showBar, { passive: true });
+  toolbar.addEventListener('mouseenter', () => clearTimeout(hideTimer));
+  hideTimer = setTimeout(() => toolbar.classList.add('hide'), 2500);
+
+  btnFs.addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  });
+})();
+</script>

@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ScreenTool from '../../components/ScreenTool.astro';
+
+const hreflang = [
+  { lang: 'en', href: '/' },
+  { lang: 'es', href: '/es' },
+  { lang: 'pt', href: '/pt' },
+  { lang: 'tr', href: '/tr' },
+  { lang: 'fr', href: '/fr' },
+  { lang: 'de', href: '/de' },
+];
+---
+
+<Layout
+  title="Écran Blanc | Écran Blanc en Ligne Gratuit"
+  description="Écran blanc plein écran en ligne — parfait comme ring light, éclairage pour selfies et visioconférences. Réglage de luminosité et température. Gratuit, sans téléchargement."
+  themeColor="#ffffff"
+  lang="fr"
+  canonical="/fr"
+  hreflang={hreflang}
+>
+  <ScreenTool
+    color="#ffffff"
+    showTemp={true}
+    pageTitle="Écran Blanc en Ligne"
+  />
+</Layout>

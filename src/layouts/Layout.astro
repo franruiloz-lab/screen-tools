@@ -1,0 +1,80 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+  themeColor?: string;
+  canonical?: string;
+  hreflang?: Array<{ lang: string; href: string }>;
+}
+
+const {
+  title,
+  description,
+  lang = 'en',
+  themeColor = '#ffffff',
+  canonical,
+  hreflang = [],
+} = Astro.props;
+
+const site = 'https://screenlab.online';
+const canonicalUrl = canonical
+  ? `${site}${canonical}`
+  : `${site}${Astro.url.pathname}`;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="theme-color" content={themeColor} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="ScreenLab" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Hreflang -->
+    {hreflang.map(({ lang: l, href }) => (
+      <link rel="alternate" hreflang={l} href={`${site}${href}`} />
+    ))}
+    {hreflang.length > 0 && (
+      <link rel="alternate" hreflang="x-default" href={site} />
+    )}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- JSON-LD WebApplication -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": title,
+      "description": description,
+      "url": canonicalUrl,
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    })} />
+
+    <style is:global>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { width: 100%; height: 100%; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

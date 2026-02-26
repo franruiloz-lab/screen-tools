@@ -1,0 +1,158 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="DVD Screensaver | Bouncing DVD Logo Online"
+  description="The iconic bouncing DVD logo screensaver online. Watch it bounce around the screen and change color on each hit. Free, instant, no download."
+  themeColor="#000000"
+  lang="en"
+  canonical="/dvd-screensaver"
+>
+  <h1 class="sr-only">DVD Screensaver — Bouncing DVD Logo Online</h1>
+  <div id="dvd-app">
+    <canvas id="dvd-canvas"></canvas>
+    <div id="dvd-info">Corner hits: <span id="corner-count">0</span></div>
+    <div id="dvd-toolbar">
+      <button id="btn-speed-slow" class="dbtn">Slow</button>
+      <button id="btn-speed-med"  class="dbtn act">Normal</button>
+      <button id="btn-speed-fast" class="dbtn">Fast</button>
+      <button id="btn-fs" class="dbtn">⛶ Fullscreen</button>
+      <a href="/" class="dbtn">← Back</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  body { background:#000; }
+  #dvd-app { position:fixed; inset:0; background:#000; overflow:hidden; }
+  #dvd-canvas { position:absolute; inset:0; width:100%; height:100%; }
+  #dvd-info {
+    position:fixed; top:12px; right:16px;
+    color:rgba(255,255,255,0.25);
+    font-size:12px; font-family:sans-serif;
+    pointer-events:none;
+  }
+  #dvd-toolbar {
+    position:fixed; bottom:0; left:0; right:0;
+    display:flex; gap:8px; padding:10px 16px;
+    background:rgba(0,0,0,0.85); border-top:1px solid #222;
+    transition:opacity 0.3s; z-index:100;
+  }
+  #dvd-toolbar.hide { opacity:0; pointer-events:none; }
+  .dbtn {
+    padding:5px 12px; border-radius:4px;
+    border:1px solid #333; background:rgba(20,20,20,0.8);
+    color:#ccc; font-size:12px; cursor:pointer; text-decoration:none;
+    transition:background 0.15s;
+  }
+  .dbtn:hover { background:rgba(50,50,50,0.8); }
+  .dbtn.act { border-color:#666; }
+</style>
+
+<script>
+(function () {
+  const canvas     = document.getElementById('dvd-canvas');
+  const ctx        = canvas.getContext('2d');
+  const cornerEl   = document.getElementById('corner-count');
+  const toolbar    = document.getElementById('dvd-toolbar');
+  const btnFs      = document.getElementById('btn-fs');
+
+  let W, H, lw, lh, x, y, vx, vy, hue, corners = 0, speed = 2;
+
+  const COLORS = [
+    '#ff4444','#ff8800','#ffdd00','#44ff44',
+    '#44ccff','#8844ff','#ff44cc','#ffffff',
+  ];
+  let colorIdx = 0;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    lw = Math.min(W * 0.2, 160);
+    lh = lw * 0.44;
+    if (!x) { x = W / 2 - lw / 2; y = H / 2 - lh / 2; }
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Initial velocity
+  vx = speed; vy = speed;
+
+  function drawDVD(x, y, color) {
+    ctx.save();
+    ctx.font = `bold ${lh * 0.55}px Arial`;
+    ctx.fillStyle = color;
+    // DVD arc decoration
+    ctx.beginPath();
+    ctx.ellipse(x + lw * 0.5, y + lh * 0.3, lw * 0.46, lh * 0.22, 0, Math.PI, 0);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lh * 0.06;
+    ctx.stroke();
+    // DVD text
+    ctx.fillText('DVD', x + lw * 0.08, y + lh * 0.88);
+    ctx.restore();
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    // Clear with black
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, W, H);
+
+    x += vx;
+    y += vy;
+
+    let hit = false;
+    if (x <= 0)        { x = 0;      vx = Math.abs(vx);  hit = true; }
+    if (x + lw >= W)   { x = W - lw; vx = -Math.abs(vx); hit = true; }
+    if (y <= 0)        { y = 0;      vy = Math.abs(vy);  hit = true; }
+    if (y + lh >= H)   { y = H - lh; vy = -Math.abs(vy); hit = true; }
+
+    if (hit) {
+      colorIdx = (colorIdx + 1) % COLORS.length;
+      // Check corner hit
+      const corner = (x <= 2 || x + lw >= W - 2) && (y <= 2 || y + lh >= H - 2);
+      if (corner) { corners++; cornerEl.textContent = corners; }
+    }
+
+    drawDVD(x, y, COLORS[colorIdx]);
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  // Speed buttons
+  document.getElementById('btn-speed-slow').addEventListener('click', function() {
+    speed = 1; vx = vx > 0 ? 1 : -1; vy = vy > 0 ? 1 : -1;
+    document.querySelectorAll('.dbtn').forEach(b => b.classList.remove('act'));
+    this.classList.add('act');
+  });
+  document.getElementById('btn-speed-med').addEventListener('click', function() {
+    speed = 2; vx = vx > 0 ? 2 : -2; vy = vy > 0 ? 2 : -2;
+    document.querySelectorAll('.dbtn').forEach(b => b.classList.remove('act'));
+    this.classList.add('act');
+  });
+  document.getElementById('btn-speed-fast').addEventListener('click', function() {
+    speed = 4; vx = vx > 0 ? 4 : -4; vy = vy > 0 ? 4 : -4;
+    document.querySelectorAll('.dbtn').forEach(b => b.classList.remove('act'));
+    this.classList.add('act');
+  });
+
+  // Toolbar
+  let hideTimer;
+  function showBar() {
+    toolbar.classList.remove('hide');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => toolbar.classList.add('hide'), 3000);
+  }
+  document.addEventListener('mousemove', showBar, { passive: true });
+  document.addEventListener('touchstart', showBar, { passive: true });
+  toolbar.addEventListener('mouseenter', () => clearTimeout(hideTimer));
+  hideTimer = setTimeout(() => toolbar.classList.add('hide'), 2000);
+
+  btnFs.addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  });
+})();
+</script>

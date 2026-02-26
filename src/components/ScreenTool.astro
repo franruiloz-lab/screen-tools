@@ -1,0 +1,429 @@
+---
+export interface Props {
+  color?: string;
+  mode?: 'solid' | 'ring';
+  showTemp?: boolean;
+  pageTitle?: string;
+}
+
+const {
+  color = '#ffffff',
+  mode = 'solid',
+  showTemp = false,
+  pageTitle = 'Screen Tool',
+} = Astro.props;
+---
+
+<h1 class="sr-only">{pageTitle}</h1>
+
+<div id="app">
+  <!-- The screen -->
+  <div id="screen" style={`background-color:${color}`}>
+    <canvas id="ring-canvas" aria-hidden="true"></canvas>
+  </div>
+
+  <!-- Floating toolbar -->
+  <div id="toolbar" role="toolbar" aria-label="Screen controls">
+    <div id="tb">
+
+      <!-- Row 1: Color presets + custom picker -->
+      <div id="tb-colors">
+        <div id="presets">
+          {[
+            ['#ffffff', 'White'],
+            ['#f9f5ee', 'Warm White'],
+            ['#eef3ff', 'Cool White'],
+            ['#111111', 'Near Black'],
+            ['#000000', 'Black'],
+            ['#ff0000', 'Red'],
+            ['#ff69b4', 'Pink'],
+            ['#ff8c00', 'Orange'],
+            ['#ffd700', 'Yellow'],
+            ['#00cc44', 'Green'],
+            ['#0077ff', 'Blue'],
+            ['#9900ff', 'Purple'],
+          ].map(([c, name]) => (
+            <button
+              class={`cp${c === color ? ' act' : ''}`}
+              data-c={c}
+              title={name}
+              style={`--bg:${c}`}
+              aria-label={name}
+            ></button>
+          ))}
+        </div>
+        <label id="custom-wrap" title="Custom color">
+          <svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="10" y1="2" x2="10" y2="18"/><line x1="2" y1="10" x2="18" y2="10"/>
+          </svg>
+          <input type="color" id="custom-color" value={color} />
+        </label>
+      </div>
+
+      <!-- Row 2: Sliders + buttons -->
+      <div id="tb-controls">
+
+        <!-- Brightness -->
+        <label class="ctrl" title="Brightness">
+          <svg class="icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <input type="range" id="brightness" min="5" max="100" value="100" />
+          <span id="bval">100%</span>
+        </label>
+
+        <!-- Color temperature (white screens only) -->
+        {showTemp && (
+          <label class="ctrl" title="Color Temperature — Cool to Warm">
+            <svg class="icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+            </svg>
+            <input type="range" id="temperature" min="0" max="100" value="50" />
+            <span id="tval">5500K</span>
+          </label>
+        )}
+
+        <!-- Ring size (only visible in ring mode) -->
+        <label class="ctrl" id="ring-size-ctrl" style="display:none" title="Ring Size">
+          <svg class="icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>
+          </svg>
+          <input type="range" id="ring-size" min="15" max="88" value="55" />
+        </label>
+
+        <!-- Ring light toggle -->
+        <button id="btn-ring" class={`tbtn${mode === 'ring' ? ' act' : ''}`} title="Toggle Ring Light Mode">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>
+          </svg>
+          Ring
+        </button>
+
+        <!-- Fullscreen -->
+        <button id="btn-fs" class="tbtn" title="Fullscreen — or double-click the screen">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 0-2 2h-3"/>
+          </svg>
+          <span id="fs-label">Fullscreen</span>
+        </button>
+
+        <!-- Quick nav to other tools -->
+        <nav id="qnav" aria-label="Other screens">
+          <a href="/" title="White Screen" class="qn">W</a>
+          <a href="/black-screen" title="Black Screen" class="qn" style="color:#999">B</a>
+          <a href="/red-screen" title="Red Screen" class="qn" style="color:#f77">R</a>
+          <a href="/zoom-lighting" title="Ring Light" class="qn" style="color:#adf">◎</a>
+          <a href="/hacker-screen" title="Hacker Screen" class="qn" style="color:#0f0">&gt;_</a>
+          <a href="/broken-screen" title="Broken Screen" class="qn" style="color:#f96">💥</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  #app { position: fixed; inset: 0; }
+
+  #screen {
+    position: absolute; inset: 0;
+    transition: background-color 0.25s ease;
+    cursor: default;
+  }
+
+  #ring-canvas {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  #ring-canvas.show { opacity: 1; }
+
+  /* ── TOOLBAR ─────────────────────────────── */
+  #toolbar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    z-index: 200;
+    padding: 32px 20px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0) 100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  #toolbar.hide {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+  }
+
+  #tb {
+    max-width: 880px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  /* Color row */
+  #tb-colors {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  #presets { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .cp {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.2);
+    background: var(--bg);
+    cursor: pointer; flex-shrink: 0;
+    transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+  }
+  .cp:hover { transform: scale(1.25); border-color: rgba(255,255,255,0.7); }
+  .cp.act  { border-color: #fff; box-shadow: 0 0 0 2px rgba(255,255,255,0.35); }
+
+  #custom-wrap {
+    width: 26px; height: 26px; border-radius: 50%;
+    border: 2px dashed rgba(255,255,255,0.4);
+    cursor: pointer; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.6); position: relative; overflow: hidden;
+    transition: border-color 0.15s;
+  }
+  #custom-wrap:hover { border-color: rgba(255,255,255,0.8); }
+  #custom-wrap input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+
+  /* Controls row */
+  #tb-controls {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+
+  .ctrl {
+    display: flex; align-items: center; gap: 6px;
+    color: rgba(255,255,255,0.75); cursor: pointer;
+  }
+  .icon { flex-shrink: 0; color: rgba(255,255,255,0.55); }
+
+  input[type=range] {
+    -webkit-appearance: none; appearance: none;
+    width: 88px; height: 4px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 2px; outline: none; cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.4); cursor: pointer;
+  }
+  input[type=range]::-moz-range-thumb {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #fff; border: none; cursor: pointer;
+  }
+
+  #bval, #tval {
+    font-size: 11px; color: rgba(255,255,255,0.45); min-width: 32px;
+  }
+
+  .tbtn {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 5px 12px; border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.1);
+    color: #fff; font-size: 12px; cursor: pointer; white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .tbtn:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.55); }
+  .tbtn.act  { background: rgba(255,255,255,0.22); border-color: #fff; }
+
+  /* Quick nav */
+  #qnav { display: flex; gap: 5px; margin-left: auto; }
+  .qn {
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.75);
+    text-decoration: none; font-size: 10px; font-weight: 700;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .qn:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); }
+
+  @media (max-width: 560px) {
+    input[type=range] { width: 64px; }
+    #bval, #tval { display: none; }
+    #fs-label { display: none; }
+    .tbtn { padding: 5px 8px; }
+  }
+</style>
+
+<script define:vars={{ initialColor: color, initialMode: mode }}>
+(function () {
+  const screen       = document.getElementById('screen');
+  const canvas       = document.getElementById('ring-canvas');
+  const toolbar      = document.getElementById('toolbar');
+  const cpBtns       = document.querySelectorAll('.cp');
+  const customColor  = document.getElementById('custom-color');
+  const briSlider    = document.getElementById('brightness');
+  const bval         = document.getElementById('bval');
+  const tempSlider   = document.getElementById('temperature');
+  const tval         = document.getElementById('tval');
+  const ringSizeSlider = document.getElementById('ring-size');
+  const ringSizeCtrl = document.getElementById('ring-size-ctrl');
+  const btnRing      = document.getElementById('btn-ring');
+  const btnFs        = document.getElementById('btn-fs');
+  const fsLabel      = document.getElementById('fs-label');
+
+  let currentColor = initialColor;
+  let isRingMode   = initialMode === 'ring';
+  let ringSize     = 55; // % of min(w,h)
+  let ctx;
+
+  // ── CANVAS INIT ──────────────────────────────────────────
+  function initCanvas() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    ctx = canvas.getContext('2d');
+    if (isRingMode) drawRing();
+  }
+  initCanvas();
+  window.addEventListener('resize', initCanvas, { passive: true });
+
+  // ── RING DRAW ─────────────────────────────────────────────
+  function drawRing() {
+    if (!ctx) return;
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+    const cx = W / 2, cy = H / 2;
+    const r  = Math.min(W, H) * ringSize / 200;   // ring center radius
+    const rw = Math.min(W, H) * 0.046;            // ring half-width
+
+    // Subtle inner ambient glow
+    const gi = ctx.createRadialGradient(cx, cy, 0, cx, cy, r - rw);
+    gi.addColorStop(0, 'rgba(255,255,255,0.045)');
+    gi.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = gi;
+    ctx.fillRect(0, 0, W, H);
+
+    // The ring
+    const g = ctx.createRadialGradient(cx, cy, r - rw, cx, cy, r + rw);
+    g.addColorStop(0,   'rgba(255,255,255,0)');
+    g.addColorStop(0.28,'rgba(255,255,255,0.65)');
+    g.addColorStop(0.5, 'rgba(255,255,255,1)');
+    g.addColorStop(0.72,'rgba(255,255,255,0.65)');
+    g.addColorStop(1,   'rgba(255,255,255,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r + rw + 4, 0, Math.PI * 2);
+    ctx.arc(cx, cy, Math.max(0, r - rw - 4), 0, Math.PI * 2, true);
+    ctx.fill();
+  }
+
+  // ── TOOLBAR AUTO-HIDE ─────────────────────────────────────
+  let hideTimer;
+  function showBar() {
+    toolbar.classList.remove('hide');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => toolbar.classList.add('hide'), 3500);
+  }
+  document.addEventListener('mousemove',  showBar, { passive: true });
+  document.addEventListener('touchstart', showBar, { passive: true });
+  toolbar.addEventListener('mouseenter', () => clearTimeout(hideTimer));
+  toolbar.addEventListener('mouseleave', () => {
+    hideTimer = setTimeout(() => toolbar.classList.add('hide'), 1500);
+  });
+  hideTimer = setTimeout(() => toolbar.classList.add('hide'), 2500);
+
+  // ── COLOR PRESETS ─────────────────────────────────────────
+  function setColor(c) {
+    if (isRingMode) return;
+    currentColor = c;
+    screen.style.backgroundColor = c;
+    if (customColor) customColor.value = c;
+    cpBtns.forEach(b => b.classList.toggle('act', b.dataset.c === c));
+  }
+  cpBtns.forEach(b => b.addEventListener('click', () => setColor(b.dataset.c)));
+  if (customColor) {
+    customColor.addEventListener('input', e => setColor(e.target.value));
+  }
+
+  // ── BRIGHTNESS ────────────────────────────────────────────
+  if (briSlider) {
+    briSlider.addEventListener('input', () => {
+      screen.style.filter = `brightness(${briSlider.value}%)`;
+      if (bval) bval.textContent = briSlider.value + '%';
+    });
+  }
+
+  // ── COLOR TEMPERATURE ─────────────────────────────────────
+  // Slider: 0 = cool (6500K, blue-white) → 100 = warm (3200K, amber-white)
+  const TEMP_LABELS = ['6500K','6000K','5500K','5000K','4500K','4000K','3500K','3200K'];
+  if (tempSlider) {
+    tempSlider.addEventListener('input', () => {
+      const t = parseInt(tempSlider.value, 10);
+      let r, g, b;
+      if (t <= 50) {
+        const p = (50 - t) / 50;
+        r = Math.round(255 - 14 * p);
+        g = Math.round(255 - 7  * p);
+        b = 255;
+      } else {
+        const p = (t - 50) / 50;
+        r = 255;
+        g = Math.round(255 - 30 * p);
+        b = Math.round(255 - 82 * p);
+      }
+      const hex = '#' + [r,g,b].map(v => v.toString(16).padStart(2,'0')).join('');
+      screen.style.backgroundColor = hex;
+      currentColor = hex;
+      const idx = Math.round(t / 100 * (TEMP_LABELS.length - 1));
+      if (tval) tval.textContent = TEMP_LABELS[idx];
+    });
+  }
+
+  // ── RING LIGHT ────────────────────────────────────────────
+  function setRingMode(on) {
+    isRingMode = on;
+    btnRing.classList.toggle('act', on);
+    canvas.classList.toggle('show', on);
+    if (ringSizeCtrl) ringSizeCtrl.style.display = on ? 'flex' : 'none';
+    if (on) {
+      screen.style.backgroundColor = '#111';
+      drawRing();
+    } else {
+      screen.style.backgroundColor = currentColor;
+    }
+  }
+
+  if (btnRing) btnRing.addEventListener('click', () => setRingMode(!isRingMode));
+  if (ringSizeSlider) {
+    ringSizeSlider.addEventListener('input', () => {
+      ringSize = parseInt(ringSizeSlider.value, 10);
+      drawRing();
+    });
+  }
+  if (isRingMode) setRingMode(true);
+
+  // ── FULLSCREEN ────────────────────────────────────────────
+  function toggleFs() {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      (document.documentElement.requestFullscreen
+        || document.documentElement.webkitRequestFullscreen)
+          .call(document.documentElement);
+    } else {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    }
+  }
+  if (btnFs) btnFs.addEventListener('click', toggleFs);
+  screen.addEventListener('dblclick', toggleFs);
+  function onFsChange() {
+    const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    if (fsLabel) fsLabel.textContent = isFs ? 'Exit' : 'Fullscreen';
+  }
+  document.addEventListener('fullscreenchange',       onFsChange);
+  document.addEventListener('webkitfullscreenchange', onFsChange);
+})();
+</script>
