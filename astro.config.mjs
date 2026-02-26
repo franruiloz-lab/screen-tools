@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 //   2. Elimina la línea `base`
 //   3. Añade un archivo public/CNAME con tu dominio
 export default defineConfig({
-  site: 'https://TU-USUARIO.github.io',  // ← cambia TU-USUARIO
+  site: 'https://franruiloz-lab.github.io',
   base: '/screen-tools',                  // ← eliminar cuando tengas dominio propio
   trailingSlash: 'never',
   compressHTML: true,
