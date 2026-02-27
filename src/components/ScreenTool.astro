@@ -359,7 +359,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     savedColors.forEach(c => {
       const btn = document.createElement('button');
       btn.className = 'cp';
-      btn.style.setProperty('--bg', c);
+      btn.style.background = c;
       btn.dataset.c = c;
       btn.title = c;
       btn.addEventListener('click', () => setColor(c));
