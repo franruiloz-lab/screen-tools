@@ -394,13 +394,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     b.addEventListener('click', () => setColor(b.dataset.c));
   });
 
-  // Color picker personalizado: guarda en localStorage tras 800ms sin cambios
+  // Color picker personalizado
+  // - input: actualiza color en tiempo real (sin guardar todavía)
+  // - change: guarda definitivamente cuando el usuario cierra el picker
   let saveTimer;
   if (customColor) {
     customColor.addEventListener('input', e => {
       setColor(e.target.value);
+    });
+    customColor.addEventListener('change', e => {
       clearTimeout(saveTimer);
-      saveTimer = setTimeout(() => persistColor(e.target.value), 800);
+      persistColor(e.target.value);
     });
   }
 
