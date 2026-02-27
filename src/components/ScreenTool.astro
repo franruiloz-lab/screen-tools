@@ -317,36 +317,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     }
   }
 
-  // ── APLICAR ESTADO ────────────────────────────────────────
-  // Única función que toca el DOM del screen — combina color + temperatura + brillo
-  function applyState() {
-    if (isRingMode) {
-      screenEl.style.backgroundColor = '#111';
-      return;
-    }
-
+  // ── CALCULAR COLOR FINAL (color + temp + brillo) ─────────
+  function computeRgb() {
     let [r, g, b] = hexToRgb(baseColor);
     const whitish = isWhitish(baseColor);
-
-    // Mostrar/ocultar temperatura según si el color es blancuzco
-    if (tempCtrl) {
-      tempCtrl.style.display = whitish ? 'flex' : 'none';
-    }
-
-    // Aplicar temperatura (solo si el color es blancuzco)
-    if (whitish && tempValue !== 50) {
-      [r, g, b] = tempToRgb(tempValue);
-    }
-
-    // Aplicar brillo multiplicando los canales directamente
-    // Esto no afecta al canvas ni crea conflictos con otros estilos
+    if (whitish && tempValue !== 50) [r, g, b] = tempToRgb(tempValue);
     const f = briValue / 100;
-    r = clamp(r * f);
-    g = clamp(g * f);
-    b = clamp(b * f);
+    return [clamp(r * f), clamp(g * f), clamp(b * f)];
+  }
 
-    screenEl.style.filter = ''; // limpiar cualquier filter residual
-    screenEl.style.backgroundColor = `rgb(${r},${g},${b})`;
+  // ── APLICAR ESTADO ────────────────────────────────────────
+  function applyState() {
+    const whitish = isWhitish(baseColor);
+    if (tempCtrl) tempCtrl.style.display = (!isRingMode && whitish) ? 'flex' : 'none';
+
+    screenEl.style.filter = '';
+    if (isRingMode) {
+      screenEl.style.backgroundColor = '#0a0a0a';
+      drawRing();
+    } else {
+      const [r, g, b] = computeRgb();
+      screenEl.style.backgroundColor = `rgb(${r},${g},${b})`;
+    }
   }
 
   // ── COLORES GUARDADOS (localStorage) ─────────────────────
@@ -383,7 +375,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
 
   function setColor(c) {
-    if (isRingMode) return;
     baseColor = c;
     if (customColor) customColor.value = /^#[0-9a-fA-F]{6}$/.test(c) ? c : '#ffffff';
     markActive(c);
@@ -439,38 +430,42 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   window.addEventListener('resize', initCanvas, { passive: true });
 
   // ── DIBUJAR ARO ───────────────────────────────────────────
+  // Usa el estado actual: baseColor + briValue + tempValue
   function drawRing() {
     if (!ctx) return;
     const W = canvas.width, H = canvas.height;
     ctx.clearRect(0, 0, W, H);
+
+    const [cr, cg, cb] = computeRgb();
+    const rgb = `${cr},${cg},${cb}`;
+
     const cx = W / 2, cy = H / 2;
     const r   = Math.min(W, H) * ringSize / 200;
-    const rw  = Math.min(W, H) * 0.046;
-    // Guardar contra radios negativos (bug con ring size muy pequeño)
+    const rw  = Math.min(W, H) * 0.052;
     const innerR = Math.max(2, r - rw);
-    const outerR = Math.max(innerR + 6, r + rw);
+    const outerR = Math.max(innerR + 8, r + rw);
 
     try {
-      // Luz ambiental interior tenue
+      // Luz ambiental interior
       const gi = ctx.createRadialGradient(cx, cy, 0, cx, cy, innerR);
-      gi.addColorStop(0, 'rgba(255,255,255,0.05)');
-      gi.addColorStop(1, 'rgba(255,255,255,0)');
+      gi.addColorStop(0, `rgba(${rgb},0.18)`);
+      gi.addColorStop(1, `rgba(${rgb},0)`);
       ctx.fillStyle = gi;
       ctx.fillRect(0, 0, W, H);
     } catch {}
 
     try {
-      // El aro
+      // El aro — más brillante
       const g = ctx.createRadialGradient(cx, cy, innerR, cx, cy, outerR);
-      g.addColorStop(0,    'rgba(255,255,255,0)');
-      g.addColorStop(0.28, 'rgba(255,255,255,0.65)');
-      g.addColorStop(0.5,  'rgba(255,255,255,1)');
-      g.addColorStop(0.72, 'rgba(255,255,255,0.65)');
-      g.addColorStop(1,    'rgba(255,255,255,0)');
+      g.addColorStop(0,    `rgba(${rgb},0)`);
+      g.addColorStop(0.18, `rgba(${rgb},0.9)`);
+      g.addColorStop(0.5,  `rgba(${rgb},1)`);
+      g.addColorStop(0.82, `rgba(${rgb},0.9)`);
+      g.addColorStop(1,    `rgba(${rgb},0)`);
       ctx.fillStyle = g;
       ctx.beginPath();
-      ctx.arc(cx, cy, outerR + 4, 0, Math.PI * 2);
-      ctx.arc(cx, cy, Math.max(1, innerR - 4), 0, Math.PI * 2, true);
+      ctx.arc(cx, cy, outerR + 6, 0, Math.PI * 2);
+      ctx.arc(cx, cy, Math.max(1, innerR - 6), 0, Math.PI * 2, true);
       ctx.fill();
     } catch {}
   }
@@ -481,13 +476,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     btnRing.classList.toggle('act', on);
     canvas.classList.toggle('show', on);
     if (ringSizeCtrl) ringSizeCtrl.style.display = on ? 'flex' : 'none';
-    if (on) {
-      if (tempCtrl) tempCtrl.style.display = 'none';
-      screenEl.style.backgroundColor = '#111';
-      drawRing();
-    } else {
-      applyState(); // restaura color + brillo + temperatura
-    }
+    applyState();
   }
 
   if (btnRing) btnRing.addEventListener('click', () => setRingMode(!isRingMode));
