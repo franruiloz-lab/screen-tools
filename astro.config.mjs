@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 //   1. Cambia `site` a tu dominio (ej: 'https://tudominio.com')
 //   2. Elimina la línea `base`
 //   3. Añade un archivo public/CNAME con tu dominio
+//   4. Actualiza las URLs en public/sitemap.xml y public/robots.txt
 export default defineConfig({
   site: 'https://franruiloz-lab.github.io',
   base: '/screen-tools',                  // ← eliminar cuando tengas dominio propio
