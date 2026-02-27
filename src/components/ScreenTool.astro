@@ -180,15 +180,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     border-left: 1px solid rgba(255,255,255,0.2);
   }
 
-  .cp {
+  /* :global porque los colores guardados se crean con JS y no reciben el atributo de scope de Astro */
+  :global(.cp) {
     width: 26px; height: 26px; border-radius: 50%;
     border: 2px solid rgba(255,255,255,0.2);
     background: var(--bg);
     cursor: pointer; flex-shrink: 0;
     transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
   }
-  .cp:hover { transform: scale(1.25); border-color: rgba(255,255,255,0.7); }
-  .cp.act   { border-color: #fff; box-shadow: 0 0 0 2px rgba(255,255,255,0.35); }
+  :global(.cp:hover) { transform: scale(1.25); border-color: rgba(255,255,255,0.7); }
+  :global(.cp.act)   { border-color: #fff; box-shadow: 0 0 0 2px rgba(255,255,255,0.35); }
 
   #custom-wrap {
     width: 26px; height: 26px; border-radius: 50%;
