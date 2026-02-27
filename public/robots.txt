@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://franruiloz-lab.github.io/screen-tools/sitemap.xml
+Sitemap: https://yourwhitescreen.com/sitemap.xml

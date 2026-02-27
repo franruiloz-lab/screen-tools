@@ -17,7 +17,7 @@ const {
   hreflang = [],
 } = Astro.props;
 
-const site = 'https://screenlab.online';
+const site = 'https://yourwhitescreen.com';
 const canonicalUrl = canonical
   ? `${site}${canonical}`
   : `${site}${Astro.url.pathname}`;
@@ -39,7 +39,7 @@ const canonicalUrl = canonical
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="ScreenLab" />
+    <meta property="og:site_name" content="YourWhiteScreen" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />

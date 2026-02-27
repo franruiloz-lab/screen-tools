@@ -1,148 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ⚠️  Cuando tengas dominio propio, reemplaza https://franruiloz-lab.github.io/screen-tools
-     por https://tudominio.com en todas las URLs de este archivo -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <!-- EN — páginas principales -->
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://franruiloz-lab.github.io/screen-tools/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://franruiloz-lab.github.io/screen-tools/es"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://franruiloz-lab.github.io/screen-tools/pt"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://franruiloz-lab.github.io/screen-tools/tr"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://franruiloz-lab.github.io/screen-tools/fr"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://franruiloz-lab.github.io/screen-tools/de"/>
+    <loc>https://yourwhitescreen.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yourwhitescreen.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://yourwhitescreen.com/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://yourwhitescreen.com/pt"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://yourwhitescreen.com/tr"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yourwhitescreen.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yourwhitescreen.com/de"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/black-screen</loc>
+    <loc>https://yourwhitescreen.com/black-screen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/zoom-lighting</loc>
+    <loc>https://yourwhitescreen.com/zoom-lighting</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/ring-light</loc>
+    <loc>https://yourwhitescreen.com/ring-light</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/red-screen</loc>
+    <loc>https://yourwhitescreen.com/red-screen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/blue-screen</loc>
+    <loc>https://yourwhitescreen.com/blue-screen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/green-screen</loc>
+    <loc>https://yourwhitescreen.com/green-screen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/pink-screen</loc>
+    <loc>https://yourwhitescreen.com/pink-screen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/orange-screen</loc>
+    <loc>https://yourwhitescreen.com/orange-screen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/yellow-screen</loc>
+    <loc>https://yourwhitescreen.com/yellow-screen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/purple-screen</loc>
+    <loc>https://yourwhitescreen.com/purple-screen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- ES -->
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/es</loc>
+    <loc>https://yourwhitescreen.com/es</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/es/pantalla-negra</loc>
+    <loc>https://yourwhitescreen.com/es/pantalla-negra</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/es/pantalla-roja</loc>
+    <loc>https://yourwhitescreen.com/es/pantalla-roja</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/es/aro-de-luz</loc>
+    <loc>https://yourwhitescreen.com/es/aro-de-luz</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- PT -->
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/pt</loc>
+    <loc>https://yourwhitescreen.com/pt</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/pt/tela-preta</loc>
+    <loc>https://yourwhitescreen.com/pt/tela-preta</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/pt/tela-vermelha</loc>
+    <loc>https://yourwhitescreen.com/pt/tela-vermelha</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- TR -->
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/tr</loc>
+    <loc>https://yourwhitescreen.com/tr</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/tr/siyah-ekran</loc>
+    <loc>https://yourwhitescreen.com/tr/siyah-ekran</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/tr/kirmizi-ekran</loc>
+    <loc>https://yourwhitescreen.com/tr/kirmizi-ekran</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- FR -->
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/fr</loc>
+    <loc>https://yourwhitescreen.com/fr</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/fr/ecran-noir</loc>
+    <loc>https://yourwhitescreen.com/fr/ecran-noir</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- DE -->
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/de</loc>
+    <loc>https://yourwhitescreen.com/de</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://franruiloz-lab.github.io/screen-tools/de/schwarzer-bildschirm</loc>
+    <loc>https://yourwhitescreen.com/de/schwarzer-bildschirm</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
