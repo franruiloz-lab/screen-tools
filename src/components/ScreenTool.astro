@@ -74,7 +74,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
           </svg>
-          <input type="range" id="brightness" min="5" max="100" value="100" />
+          <input type="range" id="brightness" min="5" max="150" value="100" />
           <span id="bval">100%</span>
         </label>
 
@@ -320,7 +320,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     let [r, g, b] = hexToRgb(baseColor);
     const whitish = isWhitish(baseColor);
     if (whitish && tempValue !== 50) [r, g, b] = tempToRgb(tempValue);
-    const f = briValue / 100;
+    const f = Math.min(briValue, 100) / 100;
     return [clamp(r * f), clamp(g * f), clamp(b * f)];
   }
 
@@ -329,7 +329,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     const whitish = isWhitish(baseColor);
     if (tempCtrl) tempCtrl.style.display = (!isRingMode && whitish) ? 'flex' : 'none';
 
-    screenEl.style.filter = '';
+    const boost = briValue > 100 ? briValue / 100 : 1;
+    const filterVal = boost > 1 ? `brightness(${boost.toFixed(2)})` : '';
+    screenEl.style.filter = filterVal;
+    canvas.style.filter   = filterVal;
+
     if (isRingMode) {
       screenEl.style.backgroundColor = '#0a0a0a';
       drawRing();
