@@ -14,4 +14,65 @@ import ScreenTool from '../components/ScreenTool.astro';
     color="#ff8c00"
     pageTitle="Orange Screen — Warm Light Online"
   />
+
+  <section class="page-content">
+    <div class="content-inner">
+      <h2>What is the Orange Screen?</h2>
+      <p>The orange screen fills your display with a warm, amber-orange tone that mimics the color temperature of tungsten bulbs, candles, and the golden hour just after sunrise or before sunset. Unlike cooler colors, orange light immediately reads as warm, inviting, and natural — making it one of the most useful screen colors for photography and video lighting.</p>
+      <p>With a color temperature equivalent of roughly 2,700–3,200K, an orange screen is the closest a monitor can get to replicating the quality of incandescent or candlelight without any physical hardware.</p>
+
+      <h3>Common Uses</h3>
+      <ul>
+        <li><strong>Warm ambient lighting:</strong> Lower the screen brightness and place it off to one side of a scene to bathe a room or subject in a soft, fireplace-like warm glow without any physical light fixtures.</li>
+        <li><strong>Sunrise and sunset simulation:</strong> Use a TV or large monitor showing orange to simulate golden hour light for indoor portraits or product photography, avoiding the need to shoot at specific times of day.</li>
+        <li><strong>Photography warm fill light:</strong> In a two-light setup, orange from one side and a cooler light (white or blue) from the other creates a natural-looking mixed-temperature scene that's very popular in commercial photography.</li>
+        <li><strong>Food photography:</strong> Warm orange light makes food look more appetizing — it enhances the appearance of bread, pasta, coffee, and roasted meats by boosting the amber tones naturally present in cooked food.</li>
+        <li><strong>Creative video and streaming backgrounds:</strong> An orange-lit background creates an energetic, cozy atmosphere for content creators, podcasters, and streamers without expensive studio gear.</li>
+        <li><strong>Evening wind-down lighting:</strong> Orange and amber light has less blue-wavelength content than white light, making it a gentler choice for use in the evening when you want to minimise melatonin disruption.</li>
+      </ul>
+
+      <h3>How to Use</h3>
+      <p>Click the fullscreen button and use your screen's hardware brightness control to dial in the intensity you want. For photography lighting, position the screen at 45–90 degrees from your subject and experiment with distance — closer gives more intense, directional orange light; further away gives a softer, more diffused fill. Pair with a white screen on the opposite side for a classic warm-cool split-light look.</p>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>What color temperature does an orange screen correspond to?</h4>
+          <p>The orange used here (#ff8c00) sits roughly in the 2,500–3,000K range in terms of visual warmth — similar to a candle or incandescent bulb. True color temperature from a screen is more complex because screens emit additive RGB light rather than thermal radiation, but perceptually the warmth is comparable. For accurate color temperature work, use a proper tungsten or daylight-balanced light source instead.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can I use an orange screen instead of a CTO (color temperature orange) gel?</h4>
+          <p>For casual photography and video, yes — an orange screen can stand in for a CTO gel on a makeshift light source. For professional color-critical work, a proper gel or tunable LED is more precise. The screen's color profile, brightness, and calibration all affect the actual wavelengths emitted, so it's a great creative tool but not a substitute for calibrated lighting equipment in professional settings.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Does orange light really affect sleep less than white light?</h4>
+          <p>Yes. The main driver of melatonin suppression is blue-wavelength light (around 480nm). Orange light contains very little blue content, so it has a much weaker effect on your sleep cycle. Studies on light and circadian rhythm consistently show that warm, amber-toned light in the evening disrupts sleep far less than cool white or blue-tinted light. An orange screen at low brightness is a reasonable choice for late-night device use.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .page-content {
+    background: #f9f9f9;
+    padding: 60px 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+  .content-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #333;
+    line-height: 1.7;
+  }
+  .content-inner h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; color: #111; }
+  .content-inner h3 { font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px; color: #222; }
+  .content-inner h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; color: #333; }
+  .content-inner p { margin-bottom: 14px; }
+  .content-inner ul { margin: 0 0 14px 20px; }
+  .content-inner ul li { margin-bottom: 6px; }
+  .faq { display: flex; flex-direction: column; gap: 20px; }
+  .faq-item { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px 20px; }
+  .faq-item p { margin: 0; }
+</style>

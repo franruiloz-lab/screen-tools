@@ -14,4 +14,65 @@ import ScreenTool from '../components/ScreenTool.astro';
     color="#9900ff"
     pageTitle="Purple Screen Online"
   />
+
+  <section class="page-content">
+    <div class="content-inner">
+      <h2>What is the Purple Screen?</h2>
+      <p>The purple screen floods your display with a deep, electric violet — a color that sits at the boundary of visible light and has strong cultural associations with creativity, mystery, and luxury. Purple light is rare in nature, which makes it visually striking and immediately attention-grabbing in photography, video, and ambient lighting setups.</p>
+      <p>Unlike primary colors, purple (a mix of red and blue) creates complex, multi-tonal shadows and highlights that can make subjects look more dimensional and dramatic in photographs and video.</p>
+
+      <h3>Common Uses</h3>
+      <ul>
+        <li><strong>Gaming setup mood lighting:</strong> Purple is one of the most popular colors for gaming desk setups and RGB environments. A screen showing purple provides a consistent, controllable accent light without needing smart bulbs or LED strips.</li>
+        <li><strong>Creative and artistic photography:</strong> Purple light creates striking, otherworldly portraits and still-life images. The mixed red-blue cast adds depth to shadows and gives subjects an almost cinematic, neon-noir quality.</li>
+        <li><strong>Music and entertainment content:</strong> Purple is strongly associated with music, performance, and nightlife aesthetics. It works as a background or fill light for music reviews, DJ streams, and entertainment-focused content creators.</li>
+        <li><strong>Fantasy and sci-fi themed shoots:</strong> Purple, combined with green or blue light, creates the chromatic split-lighting look associated with cyberpunk and science fiction visual aesthetics.</li>
+        <li><strong>Beauty photography with bold color:</strong> Purple light on dark or medium skin tones creates especially striking editorial results, with complex interactions between the warm and cool channels in the light.</li>
+        <li><strong>Crystal and gemstone photography:</strong> Amethyst, tanzanite, and purple-toned gemstones look exceptional under a purple light source, which amplifies their natural color and internal reflections.</li>
+      </ul>
+
+      <h3>How to Use</h3>
+      <p>Expand to fullscreen and adjust brightness for your desired intensity. For photography, purple works best as a dramatic side or backlight rather than a main fill — it's a bold color that can easily overpower a subject if too close or too bright. Position it further away or diffuse it by placing translucent material (like tissue paper) over part of the screen to soften the light.</p>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Is purple a real color, or is it just a mix of red and blue?</h4>
+          <p>Purple as displayed on screens is an additive mix of red and blue pixels — there is no single "purple" wavelength that appears on screen. True violet (around 380–450nm) does exist in the visible spectrum, but screens can't reproduce it accurately. What you see here is a perceptual purple: your brain combines the red and blue signals into a color sensation that doesn't correspond to any single wavelength. This is also why purple doesn't appear in a rainbow — rainbows are spectral, and purple is non-spectral.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Why does purple light look so dramatic in photos?</h4>
+          <p>Purple creates simultaneous warm and cool casts because it contains both red and blue. Shadows in red channels and highlights in blue channels — or vice versa — create the kind of color complexity that looks like a two-light setup even from a single source. This is why split-lighting with purple and another contrasting color (like orange or green) is so popular in editorial and cinematic photography.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Does this work for Twitch or YouTube stream backgrounds?</h4>
+          <p>Yes — a large screen or TV showing purple behind you or to one side creates a vivid, on-brand stream setup look without any additional lighting equipment. For best results, keep the screen slightly out of frame or use it as an edge/backlight rather than a direct fill, so the purple glow appears around you without washing out your face with colored light. Most streaming platforms compress video heavily, so bold, high-contrast colors like purple actually look better after compression than subtle pastel tones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .page-content {
+    background: #f9f9f9;
+    padding: 60px 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+  .content-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #333;
+    line-height: 1.7;
+  }
+  .content-inner h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; color: #111; }
+  .content-inner h3 { font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px; color: #222; }
+  .content-inner h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; color: #333; }
+  .content-inner p { margin-bottom: 14px; }
+  .content-inner ul { margin: 0 0 14px 20px; }
+  .content-inner ul li { margin-bottom: 6px; }
+  .faq { display: flex; flex-direction: column; gap: 20px; }
+  .faq-item { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px 20px; }
+  .faq-item p { margin: 0; }
+</style>

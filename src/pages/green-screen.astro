@@ -14,4 +14,65 @@ import ScreenTool from '../components/ScreenTool.astro';
     color="#00cc44"
     pageTitle="Green Screen Online"
   />
+
+  <section class="page-content">
+    <div class="content-inner">
+      <h2>What is the Green Screen?</h2>
+      <p>The green screen tool displays a full, saturated chroma-key green across your entire screen — the same category of color used in Hollywood film production and everyday streaming to replace backgrounds with any image or video in post. It works in any browser, on any device, with no app required.</p>
+      <p>Green is the dominant standard for chroma keying because camera sensors capture green light with more detail than any other channel, resulting in cleaner, more precise keys with less edge fringing than blue or other colors.</p>
+
+      <h3>Common Uses</h3>
+      <ul>
+        <li><strong>Virtual background reference:</strong> Test how well your webcam software (OBS, Zoom, Teams) keys out a physical green backdrop by comparing it against this digital reference color to verify your physical screen matches.</li>
+        <li><strong>Chroma key color accuracy check:</strong> Use this page to confirm that your editing software (Premiere, DaVinci, Final Cut) is set to key the right shade of green before recording with physical fabric.</li>
+        <li><strong>Streaming and video production:</strong> Use a large monitor or TV showing this green as a makeshift green screen for close-up shots, talking-head streams, or small-product video backgrounds.</li>
+        <li><strong>Plant and nature photography:</strong> The saturated green creates a lush, botanical-feeling background that works well for macro plant photography or product shots with a natural aesthetic.</li>
+        <li><strong>Creative ambient lighting:</strong> Set the screen to green at reduced brightness for a moody, forest-like ambience in dim rooms — popular for gaming setups and creative video environments.</li>
+        <li><strong>Color calibration testing:</strong> Green is a critical channel for monitor calibration; comparing a full-green screen against calibration tools helps identify panel uniformity issues.</li>
+      </ul>
+
+      <h3>How to Use</h3>
+      <p>Press the fullscreen button (or F11) to expand the green screen to fill your entire display. For chroma keying on a small scale — such as a phone or tablet behind a subject — position the device so it fills the camera frame behind your subject, then key the color in your editing software using the eyedropper tool on the screen-lit area.</p>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Can I use a phone or tablet screen as a green screen background?</h4>
+          <p>Yes, for close-up shots and small subjects it works surprisingly well. A phone screen showing this green can serve as the background for product photos, miniature scenes, or even head-and-shoulders shots when the subject is close to the camera. The key is filling as much of the camera's field of view as possible with the screen.</p>
+        </div>
+        <div class="faq-item">
+          <h4>What shade of green is used here, and does it match professional chroma key green?</h4>
+          <p>This page uses #00cc44, a bright, high-saturation green. Professional chroma key green (often called "chroma green" or "Kelly green") is typically around #00b140 or similar saturated mid-greens. They're close enough for reference and testing purposes, though physical green screen fabric has its own color profile. Most keying software lets you sample any shade of green with an eyedropper tool, so exact shade matching is less critical than clean lighting.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Why does green screen work better than other colors?</h4>
+          <p>Digital camera sensors use a Bayer filter pattern where 50% of pixels capture green information — twice as many as red or blue. This gives green the highest signal fidelity, meaning the software has more data to work with when isolating the color. The result is sharper edges, less color spill, and cleaner transparency in the final composite.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .page-content {
+    background: #f9f9f9;
+    padding: 60px 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+  .content-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #333;
+    line-height: 1.7;
+  }
+  .content-inner h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; color: #111; }
+  .content-inner h3 { font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px; color: #222; }
+  .content-inner h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; color: #333; }
+  .content-inner p { margin-bottom: 14px; }
+  .content-inner ul { margin: 0 0 14px 20px; }
+  .content-inner ul li { margin-bottom: 6px; }
+  .faq { display: flex; flex-direction: column; gap: 20px; }
+  .faq-item { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px 20px; }
+  .faq-item p { margin: 0; }
+</style>

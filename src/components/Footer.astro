@@ -1,0 +1,100 @@
+---
+const lang = Astro.props.lang || 'en';
+
+const links: Record<string, { about: string; privacy: string; contact: string; terms: string; home: string }> = {
+  en: { about: '/about', privacy: '/privacy-policy', contact: '/contact', terms: '/terms-of-use', home: '/' },
+  es: { about: '/about', privacy: '/privacy-policy', contact: '/contact', terms: '/terms-of-use', home: '/es' },
+  pt: { about: '/about', privacy: '/privacy-policy', contact: '/contact', terms: '/terms-of-use', home: '/pt' },
+  fr: { about: '/about', privacy: '/privacy-policy', contact: '/contact', terms: '/terms-of-use', home: '/fr' },
+  de: { about: '/about', privacy: '/privacy-policy', contact: '/contact', terms: '/terms-of-use', home: '/de' },
+  tr: { about: '/about', privacy: '/privacy-policy', contact: '/contact', terms: '/terms-of-use', home: '/tr' },
+};
+
+const l = links[lang] || links['en'];
+
+const toolLinks = [
+  { href: '/', label: 'White Screen' },
+  { href: '/black-screen', label: 'Black Screen' },
+  { href: '/red-screen', label: 'Red Screen' },
+  { href: '/blue-screen', label: 'Blue Screen' },
+  { href: '/green-screen', label: 'Green Screen' },
+  { href: '/yellow-screen', label: 'Yellow Screen' },
+  { href: '/pink-screen', label: 'Pink Screen' },
+  { href: '/purple-screen', label: 'Purple Screen' },
+  { href: '/orange-screen', label: 'Orange Screen' },
+  { href: '/ring-light', label: 'Ring Light' },
+  { href: '/zoom-lighting', label: 'Zoom Lighting' },
+];
+---
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div>
+        <p class="footer-brand">YourWhiteScreen</p>
+        <p class="footer-desc">Free online fullscreen color tools for photography, video calls, screen testing, and more. No download needed.</p>
+      </div>
+      <div>
+        <p class="footer-heading">Tools</p>
+        <ul>
+          {toolLinks.slice(0, 6).map(t => (
+            <li><a href={t.href}>{t.label}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">More Tools</p>
+        <ul>
+          {toolLinks.slice(6).map(t => (
+            <li><a href={t.href}>{t.label}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Info</p>
+        <ul>
+          <li><a href={l.about}>About</a></li>
+          <li><a href={l.contact}>Contact</a></li>
+          <li><a href={l.privacy}>Privacy Policy</a></li>
+          <li><a href={l.terms}>Terms of Use</a></li>
+          <li><a href="/politica-cookies">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© {new Date().getFullYear()} YourWhiteScreen — Free online screen tools</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: #111;
+    color: #aaa;
+    font-size: 13px;
+    padding: 40px 20px 24px;
+  }
+  .footer-inner { max-width: 960px; margin: 0 auto; }
+  .footer-cols {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 640px) {
+    .footer-cols { grid-template-columns: 1fr 1fr; }
+  }
+  .footer-brand { color: #fff; font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+  .footer-desc { line-height: 1.6; color: #888; font-size: 12px; }
+  .footer-heading { color: #fff; font-weight: 600; margin-bottom: 10px; }
+  ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  a { color: #888; text-decoration: none; transition: color 0.15s; }
+  a:hover { color: #fff; }
+  .footer-bottom {
+    border-top: 1px solid #222;
+    padding-top: 16px;
+    color: #555;
+    font-size: 12px;
+    text-align: center;
+  }
+</style>

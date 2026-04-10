@@ -14,4 +14,65 @@ import ScreenTool from '../components/ScreenTool.astro';
     color="#ff0000"
     pageTitle="Red Screen Online"
   />
+
+  <section class="page-content">
+    <div class="content-inner">
+      <h2>What is the Red Screen?</h2>
+      <p>The red screen tool fills your display with a pure, intense red — and of all the solid-color screen tools, red has the most unique practical application: preserving night vision. The human eye's rod cells (responsible for low-light vision) are nearly insensitive to red wavelengths, so a red screen lets you use your device in the dark without destroying your ability to see in darkness.</p>
+      <p>Beyond night vision, saturated red is also a striking creative tool for theatrical lighting, photography, and dramatic video effects that need impact without subtlety.</p>
+
+      <h3>Common Uses</h3>
+      <ul>
+        <li><strong>Night vision preservation:</strong> Astronomers, sailors, and military personnel have long used red light to read charts or use devices without ruining dark adaptation. A red screen at low brightness is the modern equivalent — check your phone in a dark environment without resetting your eyes.</li>
+        <li><strong>Darkroom photography simulation:</strong> Traditional film darkrooms use red safelights because orthochromatic and many panchromatic papers are insensitive to red light. A red screen mimics this atmosphere for creative or educational purposes.</li>
+        <li><strong>Creative and theatrical lighting:</strong> Red is the color of danger, passion, and drama. Use a screen as a practical red fill light for music videos, short films, or portrait photography that needs strong emotional color.</li>
+        <li><strong>Halloween and horror aesthetics:</strong> A red-lit room creates instant atmosphere for haunted house setups, horror-themed streams, or themed video call backgrounds.</li>
+        <li><strong>Alarm and alert indicator display:</strong> Use a secondary monitor showing a red screen as a visual alert indicator in monitoring setups, broadcast booths, or studio recording environments.</li>
+        <li><strong>Sleep-friendly device use:</strong> Red light has minimal impact on melatonin suppression compared to blue or white light, making a red screen the best choice for late-night device use.</li>
+      </ul>
+
+      <h3>How to Use</h3>
+      <p>Go fullscreen and lower your screen brightness as far as possible — for night vision use, you want just enough red glow to read by, not a bright screen. Most devices let you set brightness below the normal minimum using accessibility settings, which makes a low-brightness red screen genuinely useful for astronomy or nighttime navigation.</p>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>How long does it actually take to lose night vision, and does red light really help?</h4>
+          <p>Full dark adaptation takes 20–30 minutes, and even a brief flash of white light (including from a phone screen) can reset it. Red light genuinely helps because the rod cells in your retina, which handle low-light vision, have almost no sensitivity to wavelengths above 620nm — and red light sits right at the edge of that range. Using a red screen at low brightness means your rod cells stay adapted while your cone cells (color vision) handle the red image. It's not perfect, but it's dramatically better than white light.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Is a red screen good for sleeping next to?</h4>
+          <p>Better than blue or white, yes. Blue-wavelength light strongly suppresses melatonin production, while red light has a much weaker effect. If you need a device on while sleeping (alarm clock, monitoring app), a red screen at minimum brightness is the least disruptive option. That said, turning the screen off entirely is always better for sleep quality.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can I use a red screen as a photography background?</h4>
+          <p>Absolutely. A large TV or monitor showing red works as a dramatic backdrop for portraits, creative product shots, or music-themed photography. The key challenge is managing spill — the red light bouncing off your subject's skin or clothing. Position the screen further away or slightly off-axis to reduce spill while keeping the red glow visible in the background.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .page-content {
+    background: #f9f9f9;
+    padding: 60px 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+  .content-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #333;
+    line-height: 1.7;
+  }
+  .content-inner h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; color: #111; }
+  .content-inner h3 { font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px; color: #222; }
+  .content-inner h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; color: #333; }
+  .content-inner p { margin-bottom: 14px; }
+  .content-inner ul { margin: 0 0 14px 20px; }
+  .content-inner ul li { margin-bottom: 6px; }
+  .faq { display: flex; flex-direction: column; gap: 20px; }
+  .faq-item { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px 20px; }
+  .faq-item p { margin: 0; }
+</style>

@@ -14,4 +14,65 @@ import ScreenTool from '../components/ScreenTool.astro';
     color="#ffd700"
     pageTitle="Yellow Screen Online"
   />
+
+  <section class="page-content">
+    <div class="content-inner">
+      <h2>What is the Yellow Screen?</h2>
+      <p>The yellow screen fills your display with a bright, golden yellow — the color most associated with sunlight, warmth, and energy. Yellow light from a screen is a surprisingly effective substitute for natural sunlight when used as a photography fill light, and it creates vivid, optimistic visual contexts for creative work and content production.</p>
+      <p>At full brightness, a yellow screen produces the highest perceived luminosity of any color on a monitor, because human eyes are most sensitive to yellow-green wavelengths. This makes it the most visually intense of the solid-color screen options.</p>
+
+      <h3>Common Uses</h3>
+      <ul>
+        <li><strong>Golden hour and warm fill light simulation:</strong> Use a yellow screen to replicate the quality of late-afternoon sun for indoor portrait and product photography, letting you shoot with a golden hour feel at any time of day.</li>
+        <li><strong>Golden hour photography reference:</strong> Compare your camera's white balance and color rendering against this yellow reference to ensure your golden hour shots are being captured and processed accurately.</li>
+        <li><strong>Food photography:</strong> Yellow light closely matches the color of natural daylight with a slight warm shift, which is flattering for baked goods, citrus fruits, and anything with golden-brown surfaces.</li>
+        <li><strong>Reading light simulation test:</strong> Yellow is often used in "warm" or "paper" display modes designed to reduce eye strain. Use this screen to compare your display's warm mode against a pure yellow reference.</li>
+        <li><strong>Monitor uniformity and color accuracy testing:</strong> A full yellow screen reveals panel uniformity issues, yellowing at edges, or inconsistent color rendering that might be invisible with white or gray test patterns.</li>
+        <li><strong>Creative and energetic ambient lighting:</strong> A yellow-lit room feels bright, energetic, and cheerful — useful for upbeat video content, workspace mood lighting, or energizing morning ambience.</li>
+      </ul>
+
+      <h3>How to Use</h3>
+      <p>Click fullscreen and use your device's brightness controls. For golden hour photography simulation, position the screen to one side and slightly above the subject to mimic the angle of afternoon sun. Because yellow is so bright perceptually, you may want to reduce screen brightness more than you would with other colors to avoid the light becoming too harsh or flat.</p>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Why does yellow look brighter than other colors at the same screen brightness?</h4>
+          <p>Human vision has evolved to be most sensitive in the yellow-green range (around 555nm), where the sun emits peak energy. Yellow activates both red and green cone cells simultaneously and strongly, so it registers as more intense than red or blue light at identical physical brightness. This is why yellow road signs are more visible than other colors, and why a yellow screen at 50% brightness can feel more intense than a blue screen at 100%.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can a yellow screen simulate natural sunlight for plants?</h4>
+          <p>Not effectively. Plants need specific wavelengths (primarily red around 660nm and blue around 440nm) for photosynthesis — yellow sits between those peaks and is actually less efficient for plant growth than red or blue light. A monitor screen also lacks the UV content and intensity of natural sunlight. For plant growth, dedicated grow lights are the right tool; a yellow screen is only useful for photography of plants, not growing them.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Is there a difference between yellow and gold screens?</h4>
+          <p>Perceptually, yes. Pure yellow (#ffff00) is extremely intense — almost harsh — while gold (#ffd700, used here) is a slightly warmer, more amber-shifted yellow that reads as more luxurious and less clinical. Gold tones are more photogenic and more flattering as a light source because they contain a subtle red warmth that pure yellow lacks. If you want pure computer yellow, look for a #ffff00 variant; for photographic warm light, the gold shade used here is the more practical choice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .page-content {
+    background: #f9f9f9;
+    padding: 60px 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+  .content-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #333;
+    line-height: 1.7;
+  }
+  .content-inner h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; color: #111; }
+  .content-inner h3 { font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px; color: #222; }
+  .content-inner h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; color: #333; }
+  .content-inner p { margin-bottom: 14px; }
+  .content-inner ul { margin: 0 0 14px 20px; }
+  .content-inner ul li { margin-bottom: 6px; }
+  .faq { display: flex; flex-direction: column; gap: 20px; }
+  .faq-item { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px 20px; }
+  .faq-item p { margin: 0; }
+</style>

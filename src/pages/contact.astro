@@ -1,0 +1,44 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+---
+
+<ContentLayout
+  title="Contact | YourWhiteScreen"
+  description="Contact YourWhiteScreen for questions, suggestions, or feedback about our free online screen tools."
+  lang="en"
+  canonical="/contact"
+>
+  <style>
+    h1 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; color: #111; }
+    p { margin-bottom: 16px; color: #444; }
+    .contact-box {
+      background: #f7f7f7;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      padding: 28px;
+      margin-top: 24px;
+    }
+    .contact-box p { margin: 0; }
+    a { color: #0066cc; }
+    h2 { font-size: 1.2rem; font-weight: 700; margin: 28px 0 8px; color: #222; }
+    ul { margin: 0 0 14px 20px; color: #444; }
+    ul li { margin-bottom: 6px; }
+  </style>
+
+  <h1>Contact Us</h1>
+  <p>Have a question, suggestion, or bug report? We'd love to hear from you.</p>
+
+  <div class="contact-box">
+    <p>You can reach us by email: <a href="mailto:franruizlozano31@gmail.com">franruizlozano31@gmail.com</a></p>
+  </div>
+
+  <h2>Common questions</h2>
+  <ul>
+    <li><strong>Can I use the tools commercially?</strong> Yes, all tools are free for personal and commercial use.</li>
+    <li><strong>The colors look different on my screen.</strong> Color accuracy depends on your display calibration. Our tools output exact CSS hex values but your monitor may render them differently.</li>
+    <li><strong>Can I request a new tool?</strong> Absolutely — send us an email with your idea.</li>
+    <li><strong>Is there an API?</strong> Not currently, but we're open to discussing integration options.</li>
+  </ul>
+
+  <p>We aim to reply within 48 hours.</p>
+</ContentLayout>

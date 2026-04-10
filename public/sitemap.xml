@@ -2,147 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- EN — páginas principales -->
-  <url>
-    <loc>https://yourwhitescreen.com/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourwhitescreen.com/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://yourwhitescreen.com/es"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://yourwhitescreen.com/pt"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://yourwhitescreen.com/tr"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://yourwhitescreen.com/fr"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://yourwhitescreen.com/de"/>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/black-screen</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/zoom-lighting</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/ring-light</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/red-screen</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/blue-screen</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/green-screen</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/pink-screen</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/orange-screen</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/yellow-screen</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/purple-screen</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <!-- English tool pages -->
+  <url><loc>https://yourwhitescreen.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://yourwhitescreen.com/black-screen</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://yourwhitescreen.com/red-screen</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://yourwhitescreen.com/blue-screen</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://yourwhitescreen.com/green-screen</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://yourwhitescreen.com/yellow-screen</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourwhitescreen.com/orange-screen</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourwhitescreen.com/pink-screen</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourwhitescreen.com/purple-screen</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourwhitescreen.com/ring-light</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://yourwhitescreen.com/zoom-lighting</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <!-- ES -->
-  <url>
-    <loc>https://yourwhitescreen.com/es</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/es/pantalla-negra</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/es/pantalla-roja</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/es/aro-de-luz</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <!-- English info pages -->
+  <url><loc>https://yourwhitescreen.com/about</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://yourwhitescreen.com/contact</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://yourwhitescreen.com/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://yourwhitescreen.com/terms-of-use</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
 
-  <!-- PT -->
-  <url>
-    <loc>https://yourwhitescreen.com/pt</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/pt/tela-preta</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/pt/tela-vermelha</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <!-- Spanish pages -->
+  <url><loc>https://yourwhitescreen.com/es</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://yourwhitescreen.com/es/pantalla-negra</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourwhitescreen.com/es/pantalla-roja</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourwhitescreen.com/es/aro-de-luz</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- TR -->
-  <url>
-    <loc>https://yourwhitescreen.com/tr</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/tr/siyah-ekran</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/tr/kirmizi-ekran</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <!-- Portuguese pages -->
+  <url><loc>https://yourwhitescreen.com/pt</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://yourwhitescreen.com/pt/tela-preta</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourwhitescreen.com/pt/tela-vermelha</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- FR -->
-  <url>
-    <loc>https://yourwhitescreen.com/fr</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/fr/ecran-noir</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <!-- French pages -->
+  <url><loc>https://yourwhitescreen.com/fr</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourwhitescreen.com/fr/ecran-noir</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
-  <!-- DE -->
-  <url>
-    <loc>https://yourwhitescreen.com/de</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://yourwhitescreen.com/de/schwarzer-bildschirm</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <!-- German pages -->
+  <url><loc>https://yourwhitescreen.com/de</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourwhitescreen.com/de/schwarzer-bildschirm</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Turkish pages -->
+  <url><loc>https://yourwhitescreen.com/tr</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourwhitescreen.com/tr/siyah-ekran</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://yourwhitescreen.com/tr/kirmizi-ekran</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
 </urlset>

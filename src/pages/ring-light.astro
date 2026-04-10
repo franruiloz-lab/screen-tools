@@ -16,4 +16,65 @@ import ScreenTool from '../components/ScreenTool.astro';
     mode="ring"
     pageTitle="Ring Light Online — Virtual Ring Light"
   />
+
+  <section class="page-content">
+    <div class="content-inner">
+      <h2>What is the Virtual Ring Light?</h2>
+      <p>The virtual ring light simulates a real photography ring light using your screen — displaying a bright white ring against a dark background that produces the characteristic circular catchlight reflection in the eyes and even, flattering facial illumination. Professional ring lights cost $30–$200 and take up desk space; this tool works instantly on any device you already own.</p>
+      <p>Ring lights became the standard lighting tool for portrait photography, YouTube videos, and beauty content because they eliminate harsh shadows under the chin and eyes, making faces look more open and polished. The catchlight — the small circular reflection visible in the eyes — is one of the most immediately recognizable markers of professional portrait photography.</p>
+
+      <h3>Common Uses</h3>
+      <ul>
+        <li><strong>Portrait and selfie photography:</strong> Hold your device in front of you at face height to cast even, shadow-free light across your face, with the ring reflection visible in your eyes for that professional studio look.</li>
+        <li><strong>YouTube and TikTok content creation:</strong> Position a laptop or monitor showing the ring light in front of you while recording to get professional-quality facial lighting without any photography equipment.</li>
+        <li><strong>Product photography catchlight:</strong> Photograph shiny objects — watches, jewelry, perfume bottles, ceramics — with the ring light to create clean, circular specular highlights that make surfaces look polished and high-end.</li>
+        <li><strong>Zoom and video call lighting:</strong> Open this tool on a second monitor or tablet in front of you before a video call to instantly improve your on-camera appearance with soft, even illumination.</li>
+        <li><strong>Eye catchlight simulation for portrait compositing:</strong> Use the ring to add a consistent catchlight reference when compositing portraits, ensuring eye highlights match across different shots or subjects.</li>
+        <li><strong>Macro and close-up photography:</strong> Position a phone screen showing the ring close to small subjects for even, detailed macro lighting without the harsh directionality of a single point source.</li>
+      </ul>
+
+      <h3>How to Use</h3>
+      <p>Go fullscreen on your largest available screen and position it directly in front of, and slightly above, your face or subject — ring lights work best when they're roughly at eye level or just above. Increase your screen's brightness to maximum for maximum light output. If you want to control the catchlight size in someone's eyes, move the device closer (larger ring in eyes) or further away (smaller ring). The darker the room, the more dramatic the effect.</p>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Does a screen ring light work as well as a real ring light?</h4>
+          <p>For close-up shots and video calls, it's surprisingly effective — especially a large laptop or monitor screen. A 15-inch laptop at full brightness produces roughly 150–400 nits, which is enough for a clear fill light in a dim room. A real ring light has higher output and a larger diameter (giving softer light), but for casual content creation, selfies, and video calls, a screen ring light is a genuinely useful substitute. The closer the screen, the more it behaves like the real thing.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Where should I position the ring light relative to my face?</h4>
+          <p>Center it directly in front of your face, with the middle of the ring roughly at eye level or 10–15 cm above. Too high and it creates butterfly shadows under the nose; too low and it lights from an unflattering angle. For video calls, place your laptop so the camera is at eye level and the screen fills the space in front of you — you'll naturally be looking toward the ring, which is the ideal direction for eye contact in video.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can I use this on a phone instead of a laptop?</h4>
+          <p>Yes, though a phone screen is small and the light output is more limited. It works best for close macro photography or as a small catchlight tool rather than a main face light. For selfies, prop the phone at arm's length directly in front of your face in a dark room — the ring will appear as a bright catchlight in your eyes and provide a soft fill. For calls and video recording, a laptop or monitor gives much better results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .page-content {
+    background: #f9f9f9;
+    padding: 60px 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+  .content-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #333;
+    line-height: 1.7;
+  }
+  .content-inner h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; color: #111; }
+  .content-inner h3 { font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px; color: #222; }
+  .content-inner h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; color: #333; }
+  .content-inner p { margin-bottom: 14px; }
+  .content-inner ul { margin: 0 0 14px 20px; }
+  .content-inner ul li { margin-bottom: 6px; }
+  .faq { display: flex; flex-direction: column; gap: 20px; }
+  .faq-item { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px 20px; }
+  .faq-item p { margin: 0; }
+</style>

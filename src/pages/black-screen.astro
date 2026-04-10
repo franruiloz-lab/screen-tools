@@ -14,4 +14,65 @@ import ScreenTool from '../components/ScreenTool.astro';
     color="#000000"
     pageTitle="Black Screen Online"
   />
+
+  <section class="page-content">
+    <div class="content-inner">
+      <h2>What is the Black Screen?</h2>
+      <p>The black screen tool turns your entire display into a solid, pure black surface — no UI, no distractions, no light. It works instantly in any browser on any device, with no software to install. Simply open the page, go fullscreen, and your screen becomes a completely dark canvas ready for whatever you need.</p>
+      <p>It's one of the most versatile solid-color tools available because black isn't just the absence of color — it's a functional state. From hardware testing to saving battery on OLED panels, the practical applications are surprisingly broad.</p>
+
+      <h3>Common Uses</h3>
+      <ul>
+        <li><strong>Dead pixel test:</strong> A pure black background makes stuck or dead pixels — which glow white, red, green, or blue — immediately visible against the dark field.</li>
+        <li><strong>OLED and AMOLED power saving:</strong> On OLED/AMOLED screens, black pixels are literally turned off. Displaying a black screen consumes significantly less battery than any other color.</li>
+        <li><strong>Meditation and focus:</strong> Removing all visual stimulation from your screen helps shift attention inward. Works well alongside ambient audio for breathing exercises or timed meditation sessions.</li>
+        <li><strong>Sleep mode ambient:</strong> Keep a display on for clock visibility without flooding the room with light — set brightness very low with a black screen as the base.</li>
+        <li><strong>Security camera and projector calibration:</strong> Calibrate black levels and check for backlight bleed, hot spots, or uniformity issues on monitors and projectors.</li>
+        <li><strong>Photography and video backdrop:</strong> Use a large monitor or TV showing a black screen as a clean dark background for product photos or video B-roll.</li>
+      </ul>
+
+      <h3>How to Use</h3>
+      <p>Click the fullscreen button (or press F11 / the expand icon) to fill your entire display. Then adjust your screen's brightness using the hardware buttons on your monitor or the brightness slider on your device — the tool itself has no visible controls once fullscreen. To exit, press Escape or move your mouse to reveal the toolbar.</p>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Does a black screen actually save battery on my laptop?</h4>
+          <p>It depends on your display technology. On OLED and AMOLED screens (common on phones and some premium laptops), black pixels are switched off entirely, so yes — it makes a real difference. On LCD and IPS displays, the backlight stays on regardless of what's shown, so the power saving is minimal.</p>
+        </div>
+        <div class="faq-item">
+          <h4>How do I do a proper dead pixel test?</h4>
+          <p>Go fullscreen and inspect every corner and edge of the screen carefully. Dead pixels appear as tiny black dots that don't respond (always dark), while stuck pixels glow in a fixed color — usually red, green, or blue — that stands out clearly against the black background. Move your head slightly to avoid confusing glare with a pixel defect.</p>
+        </div>
+        <div class="faq-item">
+          <h4>My screen shows a very dark gray instead of pure black — is that normal?</h4>
+          <p>Yes, this is common with LCD and IPS panels, which have limited black levels due to backlight bleed. The page is rendering true #000000 black — what you see is your display's actual black level capability, not a rendering issue. OLED screens will show a truly perfect black.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .page-content {
+    background: #f9f9f9;
+    padding: 60px 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+  .content-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #333;
+    line-height: 1.7;
+  }
+  .content-inner h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; color: #111; }
+  .content-inner h3 { font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px; color: #222; }
+  .content-inner h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; color: #333; }
+  .content-inner p { margin-bottom: 14px; }
+  .content-inner ul { margin: 0 0 14px 20px; }
+  .content-inner ul li { margin-bottom: 6px; }
+  .faq { display: flex; flex-direction: column; gap: 20px; }
+  .faq-item { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px 20px; }
+  .faq-item p { margin: 0; }
+</style>

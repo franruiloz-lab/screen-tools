@@ -14,4 +14,65 @@ import ScreenTool from '../components/ScreenTool.astro';
     color="#0077ff"
     pageTitle="Blue Screen Online"
   />
+
+  <section class="page-content">
+    <div class="content-inner">
+      <h2>What is the Blue Screen?</h2>
+      <p>The blue screen tool fills your display with a solid, vivid blue — the same kind of saturated hue used in professional film and video production for color-based compositing. Whether you need a fill light, a chroma key reference, or a creative ambient glow, this tool gives you a clean, consistent blue surface instantly on any browser or device.</p>
+      <p>Blue is one of the most practical colors for lighting and production work because it sits far from typical human skin tones, making it easy to isolate and key out in post-production software.</p>
+
+      <h3>Common Uses</h3>
+      <ul>
+        <li><strong>Photography fill light (cool tone):</strong> Position a monitor or tablet at an angle to your subject to cast a natural-looking cool blue fill, ideal for portraits with dramatic split-lighting or cyberpunk aesthetics.</li>
+        <li><strong>Color grading reference:</strong> Use a calibrated blue display as a reference point when grading footage, ensuring your color pipeline is interpreting hues accurately before applying LUTs.</li>
+        <li><strong>Chroma key color check:</strong> Test how well your editing software keys out blue versus green — some setups with darker skin tones or certain fabrics key more cleanly on blue than green.</li>
+        <li><strong>Creative video lighting:</strong> Place a screen off-frame or use it as a practical light source visible in the shot to create moody, cinematic blue backlight effects without buying gels.</li>
+        <li><strong>Relaxing ambient light:</strong> Cool blue light at low brightness can create a calm, aquatic atmosphere in a room for relaxation or focus sessions.</li>
+        <li><strong>Aquarium and underwater photography:</strong> Simulate the color cast of water when shooting fish tanks or aquatic-themed product photography.</li>
+      </ul>
+
+      <h3>How to Use</h3>
+      <p>Click the fullscreen button to expand the blue screen to your full display, then adjust your screen's hardware brightness to control how intense the light output is. For photography lighting, position the screen at roughly 45 degrees from your subject and reduce ambient room light — even a laptop screen provides a surprisingly usable fill light source.</p>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Should I use blue screen or green screen for chroma keying?</h4>
+          <p>Green is the industry standard because digital cameras have more green pixels (due to the Bayer pattern), giving a cleaner key with less noise. However, blue works better when your subject is wearing green, when shooting against a naturally green background, or when the blue spill on a subject's edges is less problematic than green spill would be. For a quick browser-based reference, try both and compare.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can a single screen provide enough light for photography?</h4>
+          <p>A single screen won't replace a proper studio light, but it works well as a fill or accent light — especially for close-up shots, product photography on a table, or portrait detail shots. A 27-inch monitor at full brightness produces roughly 100–300 nits, which is enough for a visible blue-toned fill in a darkened room. Stack multiple screens for more output.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Why does the blue look different on my screen versus what I see in photos?</h4>
+          <p>Camera sensors and human eyes perceive color differently, and each display has its own color profile. The blue rendered here is #0077ff, but the actual wavelength of light emitted depends on your screen's panel calibration and color gamut. If you need precise color for production work, calibrate your monitor with a colorimeter first.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .page-content {
+    background: #f9f9f9;
+    padding: 60px 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+  .content-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #333;
+    line-height: 1.7;
+  }
+  .content-inner h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; color: #111; }
+  .content-inner h3 { font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px; color: #222; }
+  .content-inner h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; color: #333; }
+  .content-inner p { margin-bottom: 14px; }
+  .content-inner ul { margin: 0 0 14px 20px; }
+  .content-inner ul li { margin-bottom: 6px; }
+  .faq { display: flex; flex-direction: column; gap: 20px; }
+  .faq-item { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px 20px; }
+  .faq-item p { margin: 0; }
+</style>

@@ -15,4 +15,65 @@ import ScreenTool from '../components/ScreenTool.astro';
     mode="ring"
     pageTitle="Virtual Ring Light Online — Zoom Lighting"
   />
+
+  <section class="page-content">
+    <div class="content-inner">
+      <h2>What is the Zoom Lighting Tool?</h2>
+      <p>This tool turns your screen into a virtual ring light optimized for video calls — Zoom, Microsoft Teams, Google Meet, FaceTime, and any other platform where your appearance on camera matters. It uses a bright ring pattern that provides even, flattering facial illumination and creates the distinctive catchlight in the eyes that makes on-camera presenters look sharp, confident, and well-lit.</p>
+      <p>Most webcams struggle in typical office or home lighting because overhead ceiling lights cast harsh shadows under your eyes and chin. A screen ring light positioned in front of you solves this in seconds — no equipment purchases, no setup time, no cords.</p>
+
+      <h3>Common Uses</h3>
+      <ul>
+        <li><strong>Zoom and Teams meetings:</strong> Open this tool on a second screen or tablet directly in front of you before any video call to instantly upgrade your on-camera appearance with professional-quality front lighting.</li>
+        <li><strong>Job interviews via video:</strong> First impressions on a video interview depend heavily on how well-lit you look. A ring light eliminates the dark, shadowy look that bad office lighting creates and signals that you take the call seriously.</li>
+        <li><strong>Google Meet and Webex calls:</strong> Works with any video platform — just open the page on any screen in front of you. No plugins, no app permissions needed.</li>
+        <li><strong>Webcam image quality improvement:</strong> Webcams automatically expose for the brightest light source. Adding a bright ring light from the front stops the camera from overexposing a bright window behind you or underexposing your face in a dim room.</li>
+        <li><strong>Podcast and live streaming setup:</strong> Use alongside your main lighting or as a standalone setup for a clean, professional look during live broadcasts without expensive equipment.</li>
+        <li><strong>Online teaching and tutoring:</strong> Teachers and tutors who spend hours on camera benefit significantly from even front lighting that reduces eye strain for both presenter and viewer.</li>
+      </ul>
+
+      <h3>How to Use</h3>
+      <p>Open this page on the screen that is closest to your webcam — ideally a second monitor if your webcam is on your main monitor, or a tablet propped next to your laptop. Go fullscreen and set brightness to maximum. Position the screen so the ring is roughly centered at your eye level. In your video call software, check your camera preview — you should see an immediate improvement in face lighting and a circular catchlight visible in your eyes. Turn off or dim overhead lights for the best result.</p>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Why do I look so bad on Zoom without extra lighting?</h4>
+          <p>Most people are lit from above by ceiling lights, which create unflattering shadows under the eyes, nose, and chin — the same effect that makes horror movie characters look sinister when lit from below. Webcams compound the problem by automatically adjusting exposure for the brightest part of the frame, which is often a window or bright wall behind you, leaving your face underexposed. A bright front light (like this ring tool) tells the camera to expose for your face, and the even, shadow-free illumination makes features look open and clear rather than sunken and dark.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Should I use the ring light tool or just a plain white screen?</h4>
+          <p>Both work for lighting, but the ring pattern has one distinct advantage: it creates a circular catchlight in your eyes that looks intentional and professional, similar to what you see in broadcast journalism and YouTube thumbnails. A full white screen provides slightly more overall light output but the all-white fill can look flat. For video calls, either works — use the ring if you want the catchlight look, use a white screen if you want maximum light output.</p>
+        </div>
+        <div class="faq-item">
+          <h4>What if I only have one screen?</h4>
+          <p>Put this page in a small browser window positioned at the top of your screen near your webcam, go windowed (not fullscreen), and size it as large as possible while keeping your other apps accessible. Even a partial ring visible near the camera provides a significant improvement over no front light. Alternatively, use a phone or tablet propped on a stand next to your monitor — even a phone screen makes a noticeable difference in a dim room.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .page-content {
+    background: #f9f9f9;
+    padding: 60px 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+  .content-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #333;
+    line-height: 1.7;
+  }
+  .content-inner h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; color: #111; }
+  .content-inner h3 { font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px; color: #222; }
+  .content-inner h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; color: #333; }
+  .content-inner p { margin-bottom: 14px; }
+  .content-inner ul { margin: 0 0 14px 20px; }
+  .content-inner ul li { margin-bottom: 6px; }
+  .faq { display: flex; flex-direction: column; gap: 20px; }
+  .faq-item { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px 20px; }
+  .faq-item p { margin: 0; }
+</style>
